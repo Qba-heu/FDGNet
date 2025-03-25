@@ -302,9 +302,9 @@ def experiment():
             loss.backward(retain_graph=True)
 
             num_adv = y.unique().size()
-            zsrc_con = torch.cat([z_tgt.unsqueeze(1), z_ED.unsqueeze(1), z_ID.unsqueeze(1)], dim=1)
+            # zsrc_con = torch.cat([z_tgt.unsqueeze(1), z_ED.unsqueeze(1), z_ID.unsqueeze(1)], dim=1)
             # zsrc_con = torch.cat([z_tgt.unsqueeze(1), z_ED.unsqueeze(1)], dim=1)
-            # zsrc_con = torch.cat([z_tgt.unsqueeze(1), z_ED.unsqueeze(1).detach(), z_ID.unsqueeze(1).detach()], dim=1)
+            zsrc_con = torch.cat([z_tgt.unsqueeze(1), z_ED.unsqueeze(1).detach(), z_ID.unsqueeze(1).detach()], dim=1)
             con_loss_adv = 0
             idx_1 = np.random.randint(0, zsrc.size(1))
             # z_SD_i, zsrc_i = z_SD[mask], zsrc_con[mask]
